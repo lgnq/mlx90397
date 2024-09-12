@@ -11,7 +11,16 @@
 #ifndef __SENSOR_MELEXIS_MLX90392_H__
 #define __SENSOR_MELEXIS_MLX90392_H__
 
-#include "sensor.h"
+#include <rtdevice.h>
+
+#if defined(RT_VERSION_CHECK)
+    #if (RTTHREAD_VERSION >= RT_VERSION_CHECK(5, 0, 2))
+        #define RT_SIZE_TYPE   rt_ssize_t
+    #else
+        #define RT_SIZE_TYPE   rt_size_t
+    #endif
+#endif
+
 #include "mlx9039x.h"
 
 #define MLX90392_I2C_ADDRESS                    0x19 // address pin A0/A1 low(GND), default for Melexis MLX90393

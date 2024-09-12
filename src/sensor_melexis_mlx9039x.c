@@ -25,40 +25,7 @@ static struct mlx9039x_device *_mlx9039x_init(struct rt_sensor_intf *intf)
 
 static rt_err_t _mlx9039x_set_range(rt_sensor_t sensor, rt_int32_t range)
 {
-//    if (sensor->info.type == RT_SENSOR_CLASS_ACCE)
-//    {
-//        rt_uint8_t range_ctr;
-//
-//        if (range < 2000)
-//            range_ctr = MPU6XXX_ACCEL_RANGE_2G;
-//        else if (range < 4000)
-//            range_ctr = MPU6XXX_ACCEL_RANGE_4G;
-//        else if (range < 8000)
-//            range_ctr = MPU6XXX_ACCEL_RANGE_8G;
-//        else
-//            range_ctr = MPU6XXX_ACCEL_RANGE_16G;
-//
-//        LOG_D("acce set range %d", range_ctr);
-//
-//        return mlx9039x_set_param(mpu_dev, MPU6XXX_ACCEL_RANGE, range_ctr);
-//    }
-//    else if (sensor->info.type == RT_SENSOR_CLASS_GYRO)
-//    {
-//        rt_uint8_t range_ctr;
-//
-//        if (range < 250000UL)
-//            range_ctr = MPU6XXX_GYRO_RANGE_250DPS;
-//        else if (range < 500000UL)
-//            range_ctr = MPU6XXX_GYRO_RANGE_500DPS;
-//        else if (range < 1000000UL)
-//            range_ctr = MPU6XXX_GYRO_RANGE_1000DPS;
-//        else
-//            range_ctr = MPU6XXX_GYRO_RANGE_2000DPS;
-//
-//        LOG_D("gyro set range %d", range);
-//
-//        return mlx9039x_set_param(mpu_dev, MPU6XXX_GYRO_RANGE, range_ctr);
-//    }
+    LOG_D("Setting range is not supported!");
     return RT_EOK;
 }
 
@@ -75,7 +42,11 @@ static rt_err_t _mlx9039x_acc_set_mode(rt_sensor_t sensor, rt_uint8_t mode)
     }
     return RT_EOK;
 }
-
+static rt_err_t _mlx9039x_set_power(rt_sensor_t sensor, rt_uint8_t power)
+{
+    LOG_D("Setting power is not supported!");
+    return RT_EOK;
+}
 static rt_err_t _mlx9039x_nop(rt_sensor_t sensor)
 {
     mlx9039x_nop((struct mlx9039x_device *)sensor->parent.user_data);
@@ -86,27 +57,28 @@ static rt_err_t _mlx9039x_reset(rt_sensor_t sensor)
     mlx9039x_reset((struct mlx9039x_device *)sensor->parent.user_data);
 }
 
-static rt_size_t _mlx9039x_polling_get_data(rt_sensor_t sensor, struct rt_sensor_data *data)
+static RT_SIZE_TYPE _mlx9039x_polling_get_data(rt_sensor_t sensor, struct rt_sensor_data *data)
 {
-//    if (sensor->info.type == RT_SENSOR_CLASS_MPS)
-//    {
-//        struct mlx9039x_3axes acce;
-//        if (mlx9039x_get_accel(mpu_dev, &acce) != RT_EOK)
-//        {
-//            return 0;
-//        }
-//
-//        data->type = RT_SENSOR_CLASS_ACCE;
-//        data->data.acce.x = acce.x;
-//        data->data.acce.y = acce.y;
-//        data->data.acce.z = acce.z;
-//        data->timestamp = rt_sensor_get_ts();
-//    }
 
+   if (sensor->info.type == RT_SENSOR_CLASS_MAG)
+   {
+        struct mlx9039x_xyz xyz;
+
+        if (mlx9039x_get_xyz(mlx_dev, &xyz) != RT_EOK)
+        {
+           return 0;
+        }
+
+       data->type = RT_SENSOR_CLASS_MAG;
+       data->data.mag.x = xyz.x;
+       data->data.mag.y = xyz.y;
+       data->data.mag.z = xyz.z;
+       data->timestamp = rt_sensor_get_ts();
+   }
     return 1;
 }
 
-static rt_size_t mlx9039x_fetch_data(struct rt_sensor_device *sensor, void *buf, rt_size_t len)
+static RT_SIZE_TYPE mlx9039x_fetch_data(struct rt_sensor_device *sensor, void *buf, rt_size_t len)
 {
     RT_ASSERT(buf);
 
