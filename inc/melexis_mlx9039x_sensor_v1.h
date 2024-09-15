@@ -8,8 +8,8 @@
  * 2022-02-14     lgnq         the first version
  */
 
-#ifndef __SENSOR_MELEXIS_MLX90392_H__
-#define __SENSOR_MELEXIS_MLX90392_H__
+#ifndef __MELEXIS_MLX90392_SENSOR_V1_H__
+#define __MELEXIS_MLX90392_SENSOR_V1_H__
 
 #include <rtdevice.h>
 

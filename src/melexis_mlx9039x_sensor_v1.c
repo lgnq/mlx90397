@@ -8,9 +8,9 @@
  * 2022-02-14     lgnq         the first version
  */
 
-#include "sensor_melexis_mlx9039x.h"
+#include "melexis_mlx9039x_sensor_v1.h"
 
-#define DBG_TAG "sensor.melexis.mlx9039x"
+#define DBG_TAG "melexis.mlx9039x.sensor.v1"
 #define DBG_LVL DBG_INFO
 #include <rtdbg.h>
 

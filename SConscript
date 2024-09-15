@@ -9,7 +9,7 @@ if GetDepend('PKG_USING_MLX90397'):
     src += Glob('src/mlx9039x.c')
 
 if GetDepend('PKG_MLX90397_USING_SENSOR_V1'):
-    src += Glob('src/sensor_melexis_mlx9039x.c')
+    src += Glob('src/melexis_mlx9039x_sensor_v1.c')
 
 if GetDepend('PKG_USING_MLX90397_SAMPLE'):
     src += Glob('examples/mlx9039x_sample.c')
