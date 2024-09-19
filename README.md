@@ -11,7 +11,6 @@ And this software package has been connected to the Sensor framework, through th
 | --------------------------- | ------------ |
 | **Communication Interface** |              |
 | IIC                         | √            |
-| SPI                         | √            |
 | **Work Mode**               |              |
 | Polling                     | √            |
 | Interruption                |              |
