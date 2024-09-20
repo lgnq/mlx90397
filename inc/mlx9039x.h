@@ -374,26 +374,6 @@ struct mlx9039x_device *mlx9039x_init(const char *dev_name, rt_uint8_t param);
 void mlx9039x_deinit(struct mlx9039x_device *dev);
 
 /**
-* This function gets the data of the mps, unit: mg
- *
- * @param dev the pointer of device driver structure
- * @param mps the pointer of 3axes structure for receive data
- *
- * @return the reading status, RT_EOK reprensents  reading the data successfully.
- */
-rt_err_t mlx9039x_get_mps(struct mlx9039x_device *dev, struct mlx9039x_3axes *accel);
-
-/**
-* This function gets the data of the gyroscope, unit: deg/10s
- *
- * @param dev the pointer of device driver structure
- * @param gyro the pointer of 3axes structure for receive data
- *
- * @return the reading status, RT_EOK reprensents  reading the data successfully.
- */
-rt_err_t mlx9039x_get_gyro(struct mlx9039x_device *dev, struct mlx9039x_3axes *gyro);
-
-/**
  * This function gets the data of the temperature, unit: Centigrade
  *
  * @param dev the pointer of device driver structure
@@ -403,45 +383,6 @@ rt_err_t mlx9039x_get_gyro(struct mlx9039x_device *dev, struct mlx9039x_3axes *g
  */
 rt_err_t mlx9039x_get_temp(struct mlx9039x_device *dev, float *temp);
 
-/**
-* This function sets the offset of the accelerometer
- *
- * @param dev the pointer of device driver structure
- * @param offset the pointer of 3axes structure of offsets
- *
- * @return the setting status, RT_EOK reprensents setting the offsets successfully.
- */
-rt_err_t mlx9039x_set_accel_offset(struct mlx9039x_device *dev, struct mlx9039x_3axes *offset);
-
-/**
-* This function gets the offset of the accelerometer
- *
- * @param dev the pointer of device driver structure
- * @param offset the pointer of 3axes structure of offsets
- *
- * @return the setting status, RT_EOK reprensents reading the offsets successfully.
- */
-rt_err_t mlx9039x_get_accel_offset(struct mlx9039x_device *dev, struct mlx9039x_3axes *offset);
-
-/**
-* This function sets the offset of the gyroscope
- *
- * @param dev the pointer of device driver structure
- * @param offset the pointer of 3axes structure of offsets
- *
- * @return the setting status, RT_EOK reprensents setting the offsets successfully.
- */
-rt_err_t mlx9039x_set_gyro_offset(struct mlx9039x_device *dev, struct mlx9039x_3axes *offset);
-
-/**
-* This function gets the offset of the gyroscope
- *
- * @param dev the pointer of device driver structure
- * @param offset the pointer of 3axes structure of offsets
- *
- * @return the setting status, RT_EOK reprensents reading the offsets successfully.
- */
-rt_err_t mlx9039x_get_gyro_offset(struct mlx9039x_device *dev, struct mlx9039x_3axes *offset);
 
 rt_err_t mlx9039x_nop(struct mlx9039x_device *dev);
 rt_err_t mlx9039x_exit(struct mlx9039x_device *dev);
@@ -450,4 +391,6 @@ rt_err_t mlx9039x_reset(struct mlx9039x_device *dev);
 rt_err_t mlx9039x_get_gain_sel(struct mlx9039x_device *dev, mlx9039x_gain_t *gain);
 rt_err_t mlx9039x_get_resolution(struct mlx9039x_device *dev, mlx9039x_resolution_t *res_x, mlx9039x_resolution_t *res_y, mlx9039x_resolution_t *res_z);
 
+
+rt_err_t mlx9039x_get_xyz(struct mlx9039x_device *dev, struct mlx9039x_xyz *xyz);
 #endif
