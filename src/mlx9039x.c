@@ -52,10 +52,6 @@ static rt_err_t mlx9039x_mem_direct_read(struct mlx9039x_device *dev, rt_uint8_t
         }
 #endif
     }
-    else
-    {
-
-    }
 
     return res;
 }
@@ -100,10 +96,6 @@ static rt_err_t mlx9039x_mem_read(struct mlx9039x_device *dev, rt_uint8_t start_
         }
 #endif
     }
-    else
-    {
-
-    }
 
     return res;
 }
@@ -142,10 +134,6 @@ static rt_err_t mlx9039x_mem_write(struct mlx9039x_device *dev, rt_uint8_t *send
             res = -RT_ERROR;
         }
 #endif
-    }
-    else
-    {
-
     }
 
     return res;
@@ -186,10 +174,6 @@ static rt_err_t mlx9039x_address_reset(struct mlx9039x_device *dev)
             res = -RT_ERROR;
         }
 #endif
-    }
-    else
-    {
-
     }
 
     return res;
